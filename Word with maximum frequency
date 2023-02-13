@@ -1,0 +1,69 @@
+//{ Driver Code Starts
+#include <iostream>
+#include <map>
+#include <algorithm>
+#include <sstream>
+using namespace std;
+
+
+
+string maximumFrequency(string s);
+
+int main()
+{
+    int t;cin>>t;
+    cin.ignore();
+
+    for(int i=0;i<t;i++)
+    {
+
+        string s;
+        getline(cin,s);
+        
+        
+        cout << maximumFrequency(s) << endl;
+
+    }
+    return 0;
+}
+
+// } Driver Code Ends
+
+
+string maximumFrequency(string s){
+        // Complete the function
+   
+     string t;
+    vector<string>v;
+    map<string,int>mp;
+    
+
+    stringstream x(s);
+    while(getline(x,t,' '))
+    {
+        mp[t]++;
+        v.push_back(t);
+    }
+    string str =" ";
+    int f =0;
+    for(auto it : mp)
+    {
+        
+        if(it.second>f)
+        {
+            f = it.second;
+
+        }
+    }
+    for(auto it : v)
+    {
+        if(mp[it]==f)
+        {
+            str =it;
+            break;
+        }
+    }
+    return str + " "+to_string(f);
+        
+}
+
